@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { Sparkles } from "lucide-react";
 import { siteContent } from "@/content/site-content";
+import { RotatingPhrase } from "@/components/site/RotatingPhrase";
 
 export function HeroSection() {
   const { hero } = siteContent.home;
@@ -22,8 +24,8 @@ export function HeroSection() {
         </div>
 
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="mb-6 text-4xl font-semibold leading-tight tracking-tight text-foreground lg:text-7xl">
-            {hero.title}
+          <h1 className="mb-6 text-center text-4xl font-semibold leading-tight tracking-tight text-foreground lg:text-7xl">
+            让团队专注创造<br /><span className="pl-[0.25em]">让 AI <RotatingPhrase /></span>
           </h1>
           <p className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground lg:text-xl">
             {hero.description}
@@ -32,17 +34,10 @@ export function HeroSection() {
           <div className="mb-16 flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               href={hero.primaryCta.href}
-              className="shadow-button-press inline-flex items-center justify-center gap-2 rounded-[20px] bg-primary px-6 py-3 font-medium text-primary-foreground transition-colors hover:bg-[#ff9226]"
+              className="shadow-button-press inline-flex min-w-[220px] items-center justify-center gap-3 rounded-[20px] bg-[#ff8a13] px-8 py-4 text-base font-bold text-black transition-colors hover:bg-[#ff9226] sm:min-w-[264px]"
             >
-              <DownloadIcon />
-              {hero.primaryCta.label}
-            </Link>
-            <Link
-              href={hero.secondaryCta.href}
-              className="inline-flex items-center justify-center gap-2 rounded-[20px] border border-border bg-secondary px-6 py-3 font-medium text-foreground transition-colors hover:bg-card"
-            >
-              <DownloadIcon />
-              {hero.secondaryCta.label}
+              <Sparkles size={18} strokeWidth={2.4} />
+              <span>{hero.primaryCta.label}</span>
             </Link>
           </div>
 
@@ -103,7 +98,7 @@ function DemoNote() {
           </div>
         </div>
 
-        <div className="bg-accent p-5">
+        <div className="hero-demo-panel bg-accent p-5">
           <div className="mb-3 flex items-center gap-2">
             <span className="text-xs font-medium uppercase tracking-wide text-primary">
               {demo.enhancedLabel}
@@ -111,7 +106,7 @@ function DemoNote() {
           </div>
           <div className="space-y-3">
             {demo.enhancedSections.map((section) => (
-              <div key={section.title}>
+              <div key={section.title} className="hero-demo-item">
                 <h4 className="mb-0.5 text-sm font-semibold text-foreground">
                   {section.title}
                 </h4>
@@ -122,25 +117,5 @@ function DemoNote() {
         </div>
       </div>
     </div>
-  );
-}
-
-function DownloadIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      className="text-current"
-    >
-      <path
-        d="M8 12V2M8 12L4 8M8 12L12 8M2 14H14"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }

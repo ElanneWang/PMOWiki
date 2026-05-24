@@ -1,71 +1,50 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { siteContent } from "@/content/site-content";
+import { useEffect, useState } from "react";
 import { BrandLogo } from "@/components/site/BrandLogo";
 
+const navItems = [
+  { label: "产品介绍", href: "/#features" },
+  { label: "场景案例", href: "/#case-studies" },
+  { label: "最新动态", href: "/blog" },
+  { label: "价格", href: "/pricing" },
+];
+
 export function Navbar() {
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const updateScrolled = () => setIsScrolled(window.scrollY > 24);
+    updateScrolled();
+    window.addEventListener("scroll", updateScrolled, { passive: true });
+
+    return () => window.removeEventListener("scroll", updateScrolled);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 h-16 border-b border-border bg-background/90 backdrop-blur-xl">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 h-16 border-b border-border backdrop-blur-xl transition-[background-color,box-shadow] duration-300 ${
+        isScrolled
+          ? "bg-background/95 shadow-[0_4px_18px_rgb(159_114_73_/_0.12)]"
+          : "bg-background/90"
+      }`}
+    >
       <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-6 lg:px-20">
         <Link href="/" className="flex items-center gap-2">
           <BrandLogo />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
-          {siteContent.navigation.items.map((item) => (
-            <div
+          {navItems.map((item) => (
+            <Link
               key={item.label}
-              className="relative"
-              onMouseEnter={() =>
-                item.hasDropdown ? setActiveDropdown(item.label) : undefined
-              }
-              onMouseLeave={() => setActiveDropdown(null)}
+              href={item.href}
+              className="text-sm font-medium text-foreground transition-colors hover:text-primary"
             >
-              {item.hasDropdown ? (
-                <button className="flex items-center gap-1 text-sm font-medium text-foreground transition-colors hover:text-primary">
-                  {item.label}
-                  <ChevronDownIcon />
-                </button>
-              ) : (
-                <Link
-                  href={item.href}
-                  className="text-sm font-medium text-foreground transition-colors hover:text-primary"
-                >
-                  {item.label}
-                </Link>
-              )}
-
-              {item.hasDropdown && activeDropdown === item.label ? (
-                <div className="absolute top-full left-0 pt-2">
-                  <div className="shadow-card-warm w-80 rounded-xl border border-border bg-card p-4">
-                    {siteContent.navigation.productMenu.map((product) => (
-                      <Link
-                        key={product.title}
-                        href={product.href}
-                        className="flex items-start gap-3 rounded-lg p-3 transition-colors hover:bg-secondary"
-                      >
-                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-semibold text-foreground">
-                          {product.badge}
-                        </span>
-                        <div>
-                          <div className="font-medium text-sm text-foreground">
-                            {product.title}
-                          </div>
-                          <div className="text-xs text-muted-foreground">
-                            {product.description}
-                          </div>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-            </div>
+              {item.label}
+            </Link>
           ))}
         </div>
 
@@ -80,7 +59,7 @@ export function Navbar() {
 
       {mobileMenuOpen ? (
         <div className="absolute top-16 left-0 right-0 border-b border-border bg-card p-4 md:hidden">
-          {siteContent.navigation.items.map((item) => (
+          {navItems.map((item) => (
             <Link
               key={item.label}
               href={item.href}
@@ -93,26 +72,6 @@ export function Navbar() {
         </div>
       ) : null}
     </nav>
-  );
-}
-
-function ChevronDownIcon() {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      className="text-muted-foreground"
-    >
-      <path
-        d="M3 4.5L6 7.5L9 4.5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }
 

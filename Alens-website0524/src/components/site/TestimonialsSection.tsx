@@ -5,7 +5,7 @@ export function TestimonialsSection() {
   const { testimonials } = siteContent.home;
 
   return (
-    <section className="py-16 lg:py-24">
+    <section id="case-studies" className="py-16 lg:py-24">
       <div className="mx-auto max-w-6xl px-6 lg:px-20">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-semibold tracking-tight lg:text-5xl">
@@ -14,10 +14,11 @@ export function TestimonialsSection() {
         </div>
 
         <div className="mb-16 grid gap-6 md:grid-cols-2">
-          {testimonials.featured.map((testimonial) => (
+          {testimonials.featured.map((testimonial, index) => (
             <div
               key={testimonial.name}
-              className="shadow-card-warm rounded-2xl border border-border bg-card p-6 transition-transform hover:-translate-y-0.5"
+              className="reveal-item shadow-card-warm rounded-2xl border border-border bg-card p-6 transition-transform hover:-translate-y-0.5"
+              style={{ transitionDelay: `${index * 90}ms` }}
             >
               <blockquote className="mb-6 text-lg">
                 "{testimonial.quote}"
@@ -43,10 +44,11 @@ export function TestimonialsSection() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {testimonials.social.map((tweet) => (
+          {testimonials.social.map((tweet, index) => (
             <div
               key={tweet.handle}
-              className="shadow-card-warm rounded-2xl border border-border bg-card p-5"
+              className="reveal-item shadow-card-warm rounded-2xl border border-border bg-card p-5"
+              style={{ transitionDelay: `${index * 70}ms` }}
             >
               <div className="mb-4 flex items-center gap-3">
                 <AvatarBadge name={tweet.name} className="h-10 w-10" />

@@ -163,15 +163,6 @@ export interface SiteContent {
         bullets: string[];
       }>;
     };
-    calendar: {
-      title: string;
-      description: string;
-      actionItems: string[];
-      contextTitle: string;
-      contextItems: string[];
-      contextCtaLabel: string;
-      quote: Quote;
-    };
     takeaction: {
       title: string;
       description: string;
@@ -180,6 +171,15 @@ export interface SiteContent {
         title: string;
         bullets: string[];
       }>;
+    };
+    calendar: {
+      title: string;
+      description: string;
+      actionItems: string[];
+      contextTitle: string;
+      contextItems: string[];
+      contextCtaLabel: string;
+      quote: Quote;
     };
     templates: {
       title: string;
@@ -335,7 +335,7 @@ export const siteContent: SiteContent = {
         href: "/blog",
         ctaLabel: "See updates",
       },
-      title: "让团队专注创造，让 AI 推动协作、沉淀经验、优化流程",
+      title: "让团队专注创造 让 AI 推动协作、沉淀经验、优化流程",
       description:
         "ALens 把碎片化信息沉淀成经验，把冗余协作变成可追踪、可复用、可推进的项目流程。",
       primaryCta: { label: "抢先体验", href: "#" },
@@ -419,7 +419,7 @@ export const siteContent: SiteContent = {
     memory: {
       title: "沉淀全局记忆，让团队拥有第二大脑",
       description:
-        "不止留存信息，也在基于目标和流程积累经验。新项目自动召回相关记忆给出建议，帮团队规避重复踩坑，让工作持续复利。",
+        "基于目标和流程积累经验，新项目自动召回相关记忆给出决策建议，帮团队规避重复踩坑，让工作持续复利。",
       shareOptions: [
         "Public link",
         "#customer-feedback",
@@ -456,7 +456,7 @@ export const siteContent: SiteContent = {
       ],
     },
     calendar: {
-      title: "一张全景日历，替代复杂项目管理图表",
+      title: "一张全景日历，替代复杂项目图表",
       description:
         "告别甘特图、协作表和会议纪要的分散管理。用全景日历统一承载进度状态、协作关系、过程资产和历史经验，掌控完整项目生命周期。",
       actionItems: [
@@ -488,101 +488,112 @@ export const siteContent: SiteContent = {
       },
     },
     takeaction: {
-      title: "主动推进协作，协助处理重复工作",
+      title: "不只记录，更主动推动和执行",
       description:
-        "在项目群聊、邮件组中，主动预警流程风险、督促干系人履约，基于流程准则完成成果验收，编撰项目资料文件。",
+        "基于项目上下文识别关键事项，主动预警流程风险、督促干系人履约；依据流程准则完成成果验收，产出标准化交付文档。",
       actionOptions: [
-        "Risk alert",
-        "Stakeholder follow-up",
-        "Approval request",
-        "Status report",
-        "Meeting summary",
-        "Project brief",
+        "提醒负责人",
+        "同步干系人",
+        "生成跟进邮件",
+        "整理会议结论",
+        "标记项目风险",
+        "建议下一步",
+        "追踪承诺事项",
+        "更新项目状态",
       ],
       actionSections: [
         {
-          title: "Northstar overview",
+          title: "识别下一步",
           bullets: [
-            "100 employees with active hiring in sales and support",
-            "Operations split between San Francisco and Austin",
+            "从会议、群聊和邮件中识别待办事项",
+            "把事项关联到对应项目和负责人",
           ],
         },
         {
-          title: "Current process",
+          title: "推动协作",
           bullets: [
-            "Manual updates after every call",
-            "Too many handoffs between notes, CRM, and project tools",
-            "Decision history is hard to recover later",
+            "在 IM 和邮箱中提醒相关干系人",
+            "根据项目阶段催办关键动作",
           ],
         },
         {
-          title: "Immediate requirements",
+          title: "辅助决策",
           bullets: [
-            "Better visibility into follow-ups",
-            "Cleaner information sharing across teams",
+            "基于完整上下文提示风险和阻塞",
+            "为下一次沟通生成推进建议",
           ],
         },
       ],
     },
     templates: {
-      title: "Use templates that match the meeting",
+      title: "适合多线程项目推进的真实工作场景",
       description:
-        "Start from a repeatable structure for interviews, standups, planning, and customer calls so notes stay consistent across the team.",
-      defaultTab: "User interview",
+        "当一个人同时推进多个项目、客户、产品或案件时，ALens 会帮助团队接住过程信息、沉淀经验，并持续推动下一步行动。",
+      defaultTab: "创业团队",
       tabs: [
         {
-          label: "Customer discovery",
-          title: "Northstar - Customer discovery",
-          subtitle: "Today 5:05 PM · Jim, Michaela +5",
+          label: "创业团队",
+          title: "创始人同时推进产品、融资和客户拓展",
+          subtitle:
+            "内部产品研发、外部投资人沟通和客户对接常常同时发生，ALens 帮助创始人把每条线的进展、反馈和下一步行动放回同一个项目视图。",
           sections: [
-            { title: "Goals and motivations", content: "" },
-            { title: "Pain points", content: "" },
-            { title: "Current workflow", content: "" },
-            { title: "What stood out", content: "" },
-            { title: "Next actions", content: "" },
+            { title: "产品研发", content: "记录需求讨论、版本决策和研发阻塞。" },
+            { title: "投资人沟通", content: "沉淀每次反馈、关注点和后续材料。" },
+            { title: "客户拓展", content: "追踪客户问题、承诺事项和下一次跟进。" },
+            { title: "团队协作", content: "提醒相关成员处理关键任务。" },
+            { title: "复盘记忆", content: "把阶段经验沉淀为后续项目的参考。" },
           ],
         },
         {
-          label: "1 on 1",
-          title: "1:1 with Sarah",
-          subtitle: "Yesterday 3:00 PM · Alex",
+          label: "快消产品",
+          title: "产品经理并行管理多个 SKU 的完整生命周期",
+          subtitle:
+            "从需求策划、供应链沟通、生产排期到上线反馈，每个 SKU 都有大量过程信息。ALens 帮助产品经理把分散沟通和任务串成可追溯链路。",
           sections: [
-            { title: "Updates", content: "" },
-            { title: "Blockers", content: "" },
-            { title: "Next steps", content: "" },
+            { title: "需求策划", content: "记录市场洞察、卖点和产品定义。" },
+            { title: "生产协同", content: "同步供应商沟通、打样反馈和排期变化。" },
+            { title: "上线准备", content: "追踪物料、渠道、定价和库存事项。" },
+            { title: "风险提醒", content: "识别延期、返工和跨团队阻塞。" },
+            { title: "经验复用", content: "沉淀每个 SKU 的问题和处理方式。" },
           ],
         },
         {
-          label: "User interview",
-          title: "Northstar - User interview",
-          subtitle: "Today 5:05 PM · Jim, Michaela +5",
+          label: "B2B 销售",
+          title: "客户经理同时跟进多个客户项目",
+          subtitle:
+            "B2B 客户推进周期长、干系人多、信息分散。ALens 帮助客户经理记住每个客户的需求、异议、决策链和承诺事项。",
           sections: [
-            { title: "Goals and motivations", content: "" },
-            { title: "Pain points", content: "" },
-            { title: "Current solutions", content: "" },
-            { title: "User reactions", content: "" },
-            { title: "Feature requests", content: "" },
+            { title: "客户需求", content: "整理痛点、预算、优先级和采购目标。" },
+            { title: "干系人关系", content: "记录使用方、决策方和影响者。" },
+            { title: "跟进事项", content: "追踪报价、方案、合同和技术支持。" },
+            { title: "异议处理", content: "沉淀客户顾虑和过往回应方式。" },
+            { title: "下一步建议", content: "基于历史沟通提醒最佳推进动作。" },
           ],
         },
         {
-          label: "Pitch",
-          title: "Pitch - Series A",
-          subtitle: "Yesterday 2:00 PM · Team",
+          label: "律师案件",
+          title: "律师并行处理多起案件和客户沟通",
+          subtitle:
+            "案件推进依赖大量事实、材料、时间线和沟通记录。ALens 帮助律师把关键事实、证据材料、客户反馈和待办事项持续归档。",
           sections: [
-            { title: "Problem", content: "" },
-            { title: "Solution", content: "" },
-            { title: "Market", content: "" },
-            { title: "Competition", content: "" },
+            { title: "案件事实", content: "沉淀时间线、争议点和关键证据。" },
+            { title: "客户沟通", content: "记录客户反馈、补充材料和确认事项。" },
+            { title: "材料准备", content: "追踪文书、证据、合同和提交节点。" },
+            { title: "风险提示", content: "提醒期限、缺失材料和未确认信息。" },
+            { title: "案件复用", content: "复盘相似案件的策略和处理经验。" },
           ],
         },
         {
-          label: "Standup",
-          title: "Daily standup",
-          subtitle: "Today 9:30 AM · Team",
+          label: "达人 Agency",
+          title: "达人 agency 同步推进多个营销计划",
+          subtitle:
+            "从品牌需求、达人筛选、内容脚本、排期发布到效果复盘，每个营销计划都有大量协作节点。ALens 帮助团队统一管理多项目进度。",
           sections: [
-            { title: "Yesterday", content: "" },
-            { title: "Today", content: "" },
-            { title: "Blockers", content: "" },
+            { title: "品牌需求", content: "记录 brief、目标人群、预算和交付标准。" },
+            { title: "达人协作", content: "追踪达人名单、报价、档期和确认状态。" },
+            { title: "内容执行", content: "同步脚本、拍摄、修改和发布节点。" },
+            { title: "项目推进", content: "提醒内部同事和外部合作方完成动作。" },
+            { title: "复盘沉淀", content: "整理投放结果、合作表现和下次优化建议。" },
           ],
         },
       ],

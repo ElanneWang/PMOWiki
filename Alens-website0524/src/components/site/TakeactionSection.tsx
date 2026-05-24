@@ -12,8 +12,12 @@ export function TakeactionSection() {
               <div className="mb-4 flex justify-end">
                 <span className="text-sm font-medium text-primary">Action</span>
               </div>
-              {takeaction.actionSections.map((section) => (
-                <div key={section.title} className="mb-4 last:mb-0">
+              {takeaction.actionSections.map((section, index) => (
+                <div
+                  key={section.title}
+                  className="reveal-item mb-4 last:mb-0"
+                  style={{ transitionDelay: `${index * 80}ms` }}
+                >
                   <h3 className="mb-2 text-lg font-semibold">{section.title}</h3>
                   <ul className="ml-4 list-outside list-disc text-sm text-muted-foreground">
                     {section.bullets.map((bullet) => (
@@ -25,10 +29,11 @@ export function TakeactionSection() {
             </div>
 
             <div className="absolute top-1/2 right-4 flex -translate-y-1/2 flex-col gap-2 md:right-8">
-              {takeaction.actionOptions.slice(0, 6).map((option) => (
+              {takeaction.actionOptions.slice(0, 6).map((option, index) => (
                 <div
                   key={option}
-                  className="shadow-card-warm flex items-center gap-2 rounded-[12px] border border-border bg-card px-3 py-2"
+                  className="reveal-item shadow-card-warm flex items-center gap-2 rounded-[12px] border border-border bg-card px-3 py-2"
+                  style={{ transitionDelay: `${index * 55}ms` }}
                 >
                   <div className="h-5 w-5 rounded bg-muted" />
                   <span className="text-sm font-medium">{option}</span>
@@ -38,7 +43,7 @@ export function TakeactionSection() {
           </div>
 
           <div className="flex flex-col justify-center lg:ml-12">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-foreground lg:text-5xl">
+            <h2 className="mb-4 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
               {takeaction.title}
             </h2>
             <p className="max-w-xl text-xl text-muted-foreground">

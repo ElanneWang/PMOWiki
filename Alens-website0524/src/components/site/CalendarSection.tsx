@@ -10,13 +10,18 @@ export function CalendarSection() {
         <div className="hidden lg:grid lg:grid-cols-2 lg:gap-6">
           <div className="order-1 lg:mr-12">
             <h2 className="mb-4 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
-              {calendar.title}
+              {calendar.title.split('，').map((part, i, arr) => (
+                <span key={i}>
+                  {part}
+                  {i < arr.length - 1 && <br />}
+                </span>
+              ))}
             </h2>
             <p className="mb-12 max-w-xl text-xl text-muted-foreground">
               {calendar.description}
             </p>
 
-            <div className="shadow-card-warm relative max-w-xl rounded-lg border border-border bg-secondary p-6">
+            <div className="relative max-w-xl rounded-lg border border-border bg-secondary p-6">
               <div className="absolute top-0 bottom-0 left-0 w-1 rounded-l-lg bg-primary" />
               <blockquote className="mb-4 text-xl text-foreground">
                 &ldquo;{calendar.quote.quote}&rdquo;

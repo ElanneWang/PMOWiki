@@ -5,7 +5,7 @@ export function HowItWorksSection() {
   const titleWithoutBrand = howItWorks.title.replace(/^ALens\s*/, "");
 
   return (
-    <section className="bg-white py-16 lg:py-24">
+    <section id="features" className="bg-white py-16 lg:py-24">
       <div className="mx-auto max-w-6xl px-6 lg:px-20">
         <div className="mb-16 text-center">
           <h2 className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-3xl font-semibold tracking-tight lg:text-5xl">
@@ -19,8 +19,12 @@ export function HowItWorksSection() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {howItWorks.steps.map((step) => (
-            <div key={step.index} className="rounded-2xl bg-muted/50 p-6 lg:p-8">
+          {howItWorks.steps.map((step, index) => (
+            <div
+              key={step.index}
+              className="reveal-item rounded-2xl bg-muted/50 p-6 transition-transform hover:-translate-y-0.5 lg:p-8"
+              style={{ transitionDelay: `${index * 90}ms` }}
+            >
               <div className="mb-4 text-sm font-medium text-primary">
                 {step.index}
               </div>

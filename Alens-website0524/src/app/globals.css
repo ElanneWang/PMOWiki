@@ -133,11 +133,111 @@
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
   a,
   button,
   [role='button'] {
     @apply transition-colors duration-200;
+  }
+}
+
+.typewriter-phrase {
+  display: inline-flex;
+  min-width: 4.5em;
+  align-items: baseline;
+  justify-content: flex-start;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.typewriter-phrase::after {
+  content: "";
+  width: 0.08em;
+  height: 0.82em;
+  margin-left: 0.1em;
+  border-radius: 999px;
+  background: currentColor;
+  animation: caret-blink 900ms steps(1, end) infinite;
+}
+
+.motion-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 620ms ease,
+    transform 620ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.motion-reveal[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-item {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 520ms ease,
+    transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.motion-reveal[data-visible="true"] .reveal-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-demo-panel {
+  animation: panel-settle 680ms 280ms both cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-demo-item {
+  animation: note-rise 520ms both ease;
+}
+
+.hero-demo-item:nth-child(1) {
+  animation-delay: 420ms;
+}
+
+.hero-demo-item:nth-child(2) {
+  animation-delay: 540ms;
+}
+
+.hero-demo-item:nth-child(3) {
+  animation-delay: 660ms;
+}
+
+@keyframes caret-blink {
+  0%,
+  55% {
+    opacity: 1;
+  }
+  56%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes note-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes panel-settle {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -194,11 +294,39 @@
 }
 
 .shadow-button-press:hover {
+  transform: translateY(-1px);
   box-shadow: inset -2px 3px 5.8px 0 var(--brand-shadow-strong);
+}
+
+.shadow-button-press:active {
+  transform: translateY(0);
 }
 
 .ring-brand-soft {
   box-shadow:
     0 0 0 2px rgb(255 178 101 / 0.18),
     0 4px 9.7px 0 rgb(159 114 73 / 0.14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .motion-reveal,
+  .reveal-item,
+  .hero-demo-panel,
+  .hero-demo-item {
+    opacity: 1;
+    transform: none;
+  }
+
+  .typewriter-phrase::after {
+    display: none;
+  }
 }

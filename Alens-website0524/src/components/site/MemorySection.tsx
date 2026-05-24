@@ -38,8 +38,13 @@ export function MemorySection() {
           </div>
 
           <div className="flex flex-col justify-center lg:ml-12">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-foreground lg:text-5xl">
-              {memory.title}
+            <h2 className="mb-4 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
+              {memory.title.split('，').map((part, i, arr) => (
+                <span key={i}>
+                  {part}
+                  {i < arr.length - 1 && <br />}
+                </span>
+              ))}
             </h2>
             <p className="max-w-xl text-xl text-muted-foreground">
               {memory.description}
@@ -49,7 +54,12 @@ export function MemorySection() {
 
         <div className="text-center lg:hidden">
           <h2 className="mb-4 text-3xl font-semibold tracking-tight md:text-4xl">
-            {memory.title}
+            {memory.title.split('，').map((part, i, arr) => (
+              <span key={i}>
+                {part}
+                {i < arr.length - 1 && <br />}
+              </span>
+            ))}
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-xl text-muted-foreground">
             {memory.description}

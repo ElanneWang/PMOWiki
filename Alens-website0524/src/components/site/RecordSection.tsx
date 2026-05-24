@@ -9,15 +9,15 @@ export function RecordSection() {
       <div className="mx-auto max-w-6xl px-6 lg:px-20">
         <div className="hidden lg:grid lg:min-h-[596px] lg:grid-cols-2 lg:gap-6">
           <div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight lg:text-5xl">
+            <h2 className="mb-4 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
               {record.title}
             </h2>
             <p className="text-xl text-muted-foreground">
               {record.description}
             </p>
 
-            <div className="relative mt-8 max-w-3xl rounded-lg bg-[#f7f7f2] p-6">
-              <div className="absolute top-0 bottom-0 left-0 w-1 bg-[#0066f5]" />
+            <div className="relative mt-8 max-w-xl rounded-lg border border-border bg-secondary p-6">
+              <div className="absolute top-0 bottom-0 left-0 w-1 rounded-l-lg bg-primary" />
               <blockquote className="mb-4 text-xl text-foreground">
                 &ldquo;{record.quote.quote}&rdquo;
               </blockquote>
@@ -37,24 +37,31 @@ export function RecordSection() {
           </div>
 
           <div>
-            <div className="h-full rounded-lg border border-black/5 bg-[#f7f7f2] p-4">
+            <div className="h-full rounded-lg border border-border bg-secondary p-4">
               <div className="grid h-full grid-cols-3 gap-2">
-                {record.items.slice(0, 3).map((platform) => (
+                {record.items.slice(0, 3).map((platform, index) => (
                   <div
                     key={platform}
-                    className="flex items-center justify-center rounded-lg border border-black/5 bg-white p-4"
+                    className="reveal-item flex items-center justify-center rounded-lg border border-border bg-card p-4"
+                    style={{ transitionDelay: `${index * 55}ms` }}
                   >
                     <span className="text-center font-semibold text-muted-foreground">
                       {platform}
                     </span>
                   </div>
                 ))}
-                <div className="col-start-1 col-end-2 flex items-center justify-center rounded-lg border border-black/5 bg-white p-4">
+                <div
+                  className="reveal-item col-start-1 col-end-2 flex items-center justify-center rounded-lg border border-border bg-card p-4"
+                  style={{ transitionDelay: "165ms" }}
+                >
                   <span className="text-center font-semibold text-muted-foreground">
                     {record.items[3]}
                   </span>
                 </div>
-                <div className="col-start-2 col-end-3 flex items-center justify-center rounded-lg border border-black/5 bg-white p-4">
+                <div
+                  className="reveal-item col-start-2 col-end-3 flex items-center justify-center rounded-lg border border-border bg-card p-4"
+                  style={{ transitionDelay: "220ms" }}
+                >
                   <span className="text-center font-semibold text-muted-foreground">
                     {record.items[4]}
                   </span>
@@ -76,8 +83,12 @@ export function RecordSection() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4">
-            {record.items.map((platform) => (
-              <div key={platform} className="rounded-lg bg-muted px-4 py-2">
+            {record.items.map((platform, index) => (
+              <div
+                key={platform}
+                className="reveal-item rounded-lg bg-muted px-4 py-2"
+                style={{ transitionDelay: `${index * 55}ms` }}
+              >
                 <span className="text-sm font-medium">{platform}</span>
               </div>
             ))}

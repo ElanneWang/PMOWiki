@@ -22,10 +22,11 @@ export function TabbedSection() {
         </div>
 
         <div className="mb-8 flex flex-wrap justify-center gap-2">
-          {templates.tabs.map((tab) => (
+          {templates.tabs.map((tab, index) => (
             <button
               key={tab.label}
               onClick={() => setActiveTab(tab.label)}
+              style={{ transitionDelay: `${index * 45}ms` }}
               className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
                 activeTab === tab.label
                   ? "bg-foreground text-white"
@@ -44,12 +45,18 @@ export function TabbedSection() {
           </div>
 
           <div className="space-y-4">
-            {content.sections.map((section) => (
-              <div key={section.title}>
-                <h4 className="mb-2 text-sm font-semibold text-muted-foreground">
+            {content.sections.map((section, index) => (
+              <div
+                key={section.title}
+                className="reveal-item rounded-xl bg-muted/50 p-4"
+                style={{ transitionDelay: `${index * 70}ms` }}
+              >
+                <h4 className="mb-1 text-sm font-semibold text-foreground">
                   {section.title}
                 </h4>
-                <div className="h-2 w-full rounded bg-muted" />
+                <p className="text-sm text-muted-foreground">
+                  {section.content}
+                </p>
               </div>
             ))}
           </div>
