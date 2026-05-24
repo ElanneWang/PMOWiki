@@ -7,6 +7,7 @@ import { MemorySection } from "@/components/site/MemorySection";
 import { TabbedSection } from "@/components/site/TabbedSection";
 import { TestimonialsSection } from "@/components/site/TestimonialsSection";
 import { CalendarSection } from "@/components/site/CalendarSection";
+import { TakeactionSection } from "@/components/site/TakeactionSection";
 
 export default function HomePage() {
   return (
@@ -17,6 +18,7 @@ export default function HomePage() {
       <RecordSection />
       <MemorySection />
       <CalendarSection />
+      <TakeactionSection />
       <TabbedSection />
       <TestimonialsSection />
       <Footer />

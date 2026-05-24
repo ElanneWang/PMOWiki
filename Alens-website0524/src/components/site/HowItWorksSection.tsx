@@ -2,13 +2,19 @@ import { siteContent } from "@/content/site-content";
 
 export function HowItWorksSection() {
   const { howItWorks } = siteContent.home;
+  const titleWithoutBrand = howItWorks.title.replace(/^ALens\s*/, "");
 
   return (
     <section className="bg-white py-16 lg:py-24">
       <div className="mx-auto max-w-6xl px-6 lg:px-20">
         <div className="mb-16 text-center">
-          <h2 className="text-3xl font-semibold tracking-tight lg:text-5xl">
-            {howItWorks.title}
+          <h2 className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-3xl font-semibold tracking-tight lg:text-5xl">
+            <img
+              src="/images/alens-wordmark.svg"
+              alt="ALens"
+              className="h-[1.08em] shrink-0 translate-y-[0.03em]"
+            />
+            <span>{titleWithoutBrand}</span>
           </h2>
         </div>
 

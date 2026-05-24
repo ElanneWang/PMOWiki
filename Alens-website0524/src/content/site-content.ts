@@ -135,6 +135,241 @@ export interface SiteContent {
       };
     };
     howItWorks: {
+      title: string;
+      steps: Array<{
+        index: string;
+        title: string;
+        description: string;
+        windowTitle: string;
+        windowLabel: string;
+        summaryTitle?: string;
+        summaryDescription?: string;
+        helperText?: string;
+        platforms?: string[];
+      }>;
+    };
+    record: {
+      title: string;
+      description: string;
+      items: string[];
+      quote: Quote;
+    };
+    memory: {
+      title: string;
+      description: string;
+      shareOptions: string[];
+      noteSections: Array<{
+        title: string;
+        bullets: string[];
+      }>;
+    };
+    calendar: {
+      title: string;
+      description: string;
+      actionItems: string[];
+      contextTitle: string;
+      contextItems: string[];
+      contextCtaLabel: string;
+      quote: Quote;
+    };
+    takeaction: {
+      title: string;
+      description: string;
+      actionOptions: string[];
+      actionSections: Array<{
+        title: string;
+        bullets: string[];
+      }>;
+    };
+    templates: {
+      title: string;
+      description: string;
+      tabs: MeetingTemplate[];
+      defaultTab: string;
+    };
+    testimonials: {
+      title: string;
+      socialHeading: string;
+      featured: Quote[];
+      social: SocialProof[];
+    };
+  };
+  pricing: {
+    title: string;
+    description: string;
+    plans: PricingPlan[];
+    notePrefix: string;
+    noteText: string;
+    noteLink: ActionLink;
+    testimonial: {
+      quote: string;
+      person: Person;
+      href: string;
+      hrefLabel: string;
+    };
+    resourcesTitle: string;
+    resources: ResourceCard[];
+  };
+  faq: {
+    title: string;
+    items: FaqItem[];
+  };
+  blog: {
+    title: string;
+    filters: Array<{
+      label: string;
+      value: "all" | "blog" | "updates" | "press";
+    }>;
+    posts: BlogPostSummary[];
+  };
+}
+
+export const siteContent: SiteContent = {
+  brand: {
+    name: "Alens",
+    legalName: "Alens, Inc.",
+    language: "zh-CN",
+    tagline: "AI meeting workspace for focused teams.",
+  },
+  seo: {
+    title: "Alens | AI Meeting Workspace",
+    description:
+      "Alens helps teams capture meetings, organize context, and turn conversations into action without adding extra overhead.",
+    keywords: [
+      "AI meeting notes",
+      "meeting workspace",
+      "team knowledge",
+      "meeting assistant",
+      "note automation",
+    ],
+  },
+  navigation: {
+    items: [
+      { label: "Features", href: "/", hasDropdown: true },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Blog", href: "/blog" },
+      { label: "Customers", href: "#" },
+      { label: "Download", href: "#" },
+    ],
+    productMenu: [
+      {
+        title: "Workspace",
+        description: "Capture calls, notes, and follow-ups in one place.",
+        href: "/",
+        badge: "W",
+      },
+      {
+        title: "Chat",
+        description: "Ask questions across meetings and team context.",
+        href: "#",
+        badge: "C",
+      },
+      {
+        title: "Mobile",
+        description: "Review notes and highlights on the go.",
+        href: "#",
+        badge: "M",
+      },
+    ],
+  },
+  footer: {
+    ctaTitle: "Ready to turn meetings into momentum?",
+    ctaDescription:
+      "Start with the current site structure, then swap copy and flows as your product direction sharpens.",
+    ctaLinks: [
+      { label: "Start free", href: "#" },
+      { label: "Book a demo", href: "#" },
+    ],
+    columns: [
+      {
+        title: "Product",
+        links: [
+          { label: "Overview", href: "/" },
+          { label: "Pricing", href: "/pricing" },
+          { label: "Templates", href: "#" },
+          { label: "Integrations", href: "#" },
+        ],
+      },
+      {
+        title: "Company",
+        links: [
+          { label: "About", href: "#" },
+          { label: "Careers", href: "#" },
+          { label: "Contact", href: "#" },
+        ],
+      },
+      {
+        title: "Resources",
+        links: [
+          { label: "Blog", href: "/blog" },
+          { label: "Security", href: "#" },
+          { label: "Help Center", href: "#" },
+        ],
+      },
+      {
+        title: "Developers",
+        links: [
+          { label: "API", href: "#" },
+          { label: "Changelog", href: "#" },
+          { label: "Status", href: "#" },
+        ],
+      },
+    ],
+    socialLinks: [
+      { label: "LinkedIn", href: "#", platform: "linkedin" },
+      { label: "X", href: "#", platform: "x" },
+      { label: "YouTube", href: "#", platform: "youtube" },
+    ],
+    legalLinks: [
+      { label: "Terms", href: "#" },
+      { label: "Privacy", href: "#" },
+      { label: "Security", href: "#" },
+    ],
+    note: "Built for teams that want cleaner context and faster follow-through.",
+    copyright: "© Alens, Inc. 2026",
+  },
+  home: {
+    hero: {
+      announcement: {
+        label: "给多线程团队的 AI 项目管家",
+        href: "/blog",
+        ctaLabel: "See updates",
+      },
+      title: "让团队专注创造，让 AI 推动协作、沉淀经验、优化流程",
+      description:
+        "ALens 把碎片化信息沉淀成经验，把冗余协作变成可追踪、可复用、可推进的项目流程。",
+      primaryCta: { label: "抢先体验", href: "#" },
+      secondaryCta: { label: "了解更多", href: "#" },
+      demo: {
+        meetingLabel: "Intro call: Northstar",
+        statPills: ["Team of 100", "US"],
+        rawNotesLabel: "Your notes + transcript",
+        rawNotes: [
+          "Northstar overview",
+          "100 employees, hiring 20 more this quarter",
+          "Operations split between San Francisco and Austin",
+        ],
+        enhancedLabel: "AI enhanced",
+        enhancedSections: [
+          {
+            title: "Company snapshot",
+            description:
+              "Series B company with a distributed operating team and an active hiring plan for Q3.",
+          },
+          {
+            title: "Current pain points",
+            description:
+              "Manual updates, fragmented context, and a workflow that still depends on copying notes into other tools.",
+          },
+          {
+            title: "Immediate needs",
+            description:
+              "Shared follow-ups, clean summaries, and a simple way to surface decisions after every meeting.",
+          },
+        ],
+      },
+    },
+    howItWorks: {
       title: "ALens 如何融入人类团队的协作",
       steps: [
         {
@@ -169,9 +404,9 @@ export interface SiteContent {
       ],
     },
     record: {
-      title: "鐩存帴鍙備笌缇よ亰鍜屼細璁紝鏃犳劅鐣欏瓨纰庣墖鍖栦俊鎭?,
+      title: "直接参与群聊和会议，无感留存碎片化信息",
       description:
-        "浼氳娌熼€氫竴閿綍鍒惰浆鍐欙紝缇よ亰鍐呭鑷姩鏁寸悊褰掓。锛岄」鐩祫浜у揩閫熷叧鑱斻€傝鍒嗘暎鍦ㄥ悇澶勭殑闅愭€х煡璇嗚嚜鐒剁暀瀛樸€?,
+        "会议沟通一键录制转写，群聊内容自动整理归档，项目资产快速关联，让分散在各处的过程信息自然留存。",
       items: ["Zoom", "Google Meet", "Webex", "Slack", "Microsoft Teams"],
       quote: {
         quote:
@@ -182,9 +417,9 @@ export interface SiteContent {
       },
     },
     memory: {
-      title: "娌夋穩鍏ㄥ眬璁板繂锛岃鍥㈤槦鎷ユ湁绗簩澶ц剳",
+      title: "沉淀全局记忆，让团队拥有第二大脑",
       description:
-        "涓嶆鐣欏瓨淇℃伅锛屼篃鍦ㄥ熀浜庣洰鏍囧拰娴佺▼绉疮缁忛獙銆傛柊椤圭洰鑷姩鍙洖鐩稿叧璁板繂缁欏嚭鍐崇瓥寤鸿锛屽府鍥㈤槦瑙勯伩閲嶅韪╁潙锛岃宸ヤ綔鎸佺画澶嶅埄銆?",
+        "不止留存信息，也在基于目标和流程积累经验。新项目自动召回相关记忆给出建议，帮团队规避重复踩坑，让工作持续复利。",
       shareOptions: [
         "Public link",
         "#customer-feedback",
@@ -221,9 +456,9 @@ export interface SiteContent {
       ],
     },
     calendar: {
-      title: "涓€寮犲叏鏅棩鍘嗭紝鏇夸唬澶嶆潅椤圭洰绠＄悊鍥捐〃",
+      title: "一张全景日历，替代复杂项目管理图表",
       description:
-        "鍛婂埆鐢樼壒鍥俱€佸崗浣滆〃銆佷細璁邯瑕佺殑鍒嗘暎绠＄悊銆傜敤鍏ㄦ櫙鏃ュ巻缁熶竴鎵胯浇杩涘害鐘舵€併€佸崗浣滃叧绯汇€佽繃绋嬭祫浜с€佸巻鍙茬粡楠岋紝鎺屾帶瀹屾暣椤圭洰鐢熷懡鍛ㄦ湡.",
+        "告别甘特图、协作表和会议纪要的分散管理。用全景日历统一承载进度状态、协作关系、过程资产和历史经验，掌控完整项目生命周期。",
       actionItems: [
         "Write a follow-up email",
         "List action items",
@@ -252,6 +487,43 @@ export interface SiteContent {
         company: "Northstar",
       },
     },
+    takeaction: {
+      title: "主动推进协作，协助处理重复工作",
+      description:
+        "在项目群聊、邮件组中，主动预警流程风险、督促干系人履约，基于流程准则完成成果验收，编撰项目资料文件。",
+      actionOptions: [
+        "Risk alert",
+        "Stakeholder follow-up",
+        "Approval request",
+        "Status report",
+        "Meeting summary",
+        "Project brief",
+      ],
+      actionSections: [
+        {
+          title: "Northstar overview",
+          bullets: [
+            "100 employees with active hiring in sales and support",
+            "Operations split between San Francisco and Austin",
+          ],
+        },
+        {
+          title: "Current process",
+          bullets: [
+            "Manual updates after every call",
+            "Too many handoffs between notes, CRM, and project tools",
+            "Decision history is hard to recover later",
+          ],
+        },
+        {
+          title: "Immediate requirements",
+          bullets: [
+            "Better visibility into follow-ups",
+            "Cleaner information sharing across teams",
+          ],
+        },
+      ],
+    },
     templates: {
       title: "Use templates that match the meeting",
       description:
@@ -261,7 +533,7 @@ export interface SiteContent {
         {
           label: "Customer discovery",
           title: "Northstar - Customer discovery",
-          subtitle: "Today 5:05 PM 路 Jim, Michaela +5",
+          subtitle: "Today 5:05 PM · Jim, Michaela +5",
           sections: [
             { title: "Goals and motivations", content: "" },
             { title: "Pain points", content: "" },
@@ -273,7 +545,7 @@ export interface SiteContent {
         {
           label: "1 on 1",
           title: "1:1 with Sarah",
-          subtitle: "Yesterday 3:00 PM 路 Alex",
+          subtitle: "Yesterday 3:00 PM · Alex",
           sections: [
             { title: "Updates", content: "" },
             { title: "Blockers", content: "" },
@@ -283,7 +555,7 @@ export interface SiteContent {
         {
           label: "User interview",
           title: "Northstar - User interview",
-          subtitle: "Today 5:05 PM 路 Jim, Michaela +5",
+          subtitle: "Today 5:05 PM · Jim, Michaela +5",
           sections: [
             { title: "Goals and motivations", content: "" },
             { title: "Pain points", content: "" },
@@ -295,7 +567,7 @@ export interface SiteContent {
         {
           label: "Pitch",
           title: "Pitch - Series A",
-          subtitle: "Yesterday 2:00 PM 路 Team",
+          subtitle: "Yesterday 2:00 PM · Team",
           sections: [
             { title: "Problem", content: "" },
             { title: "Solution", content: "" },
@@ -306,7 +578,7 @@ export interface SiteContent {
         {
           label: "Standup",
           title: "Daily standup",
-          subtitle: "Today 9:30 AM 路 Team",
+          subtitle: "Today 9:30 AM · Team",
           sections: [
             { title: "Yesterday", content: "" },
             { title: "Today", content: "" },
