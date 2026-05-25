@@ -26,7 +26,6 @@ export function Footer() {
                         : "inline-flex items-center justify-center gap-2 rounded-[20px] border border-border bg-secondary px-6 py-3 font-medium text-foreground transition-colors hover:bg-card"
                     }
                   >
-                    <DownloadIcon />
                     {link.label}
                   </Link>
                 ))}

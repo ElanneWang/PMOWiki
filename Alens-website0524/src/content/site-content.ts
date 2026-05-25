@@ -273,12 +273,12 @@ export const siteContent: SiteContent = {
     ],
   },
   footer: {
-    ctaTitle: "Ready to turn meetings into momentum?",
+    ctaTitle: "让 AI 加入团队，成为项目推进的加速器",
     ctaDescription:
-      "Start with the current site structure, then swap copy and flows as your product direction sharpens.",
+      "ALens 自动沉淀协作经验、追踪待办事项、预警流程风险，让团队从繁琐的跟进中解脱出来，专注创造价值。",
     ctaLinks: [
-      { label: "Start free", href: "#" },
-      { label: "Book a demo", href: "#" },
+      { label: "抢先体验", href: "#" },
+      { label: "联系我们", href: "#" },
     ],
     columns: [
       {

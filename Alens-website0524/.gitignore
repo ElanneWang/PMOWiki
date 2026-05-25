@@ -47,3 +47,51 @@ next-env.d.ts
 
 # Local temp files
 temp/
+
+# Turborepo
+.turbo/
+
+# Logs
+*.log
+
+# Vercel
+.vercel
+.vercelignore
+
+# Sibling projects (not part of this repo)
+../ALens-website/
+../ALensskillmarket/
+../Alens/
+../Alenslandingpageclone/
+../GioiaAnaLens/
+../KOCManage/
+../Karpathy/
+../Team&HR/
+../alens-memory/
+../alensreview/
+../claude-howto/
+../granola-website/
+../huasheng_editor/
+../opencode/
+../opensourcelearning/
+../opensourceskillmarket/
+../shiyanshi-brandingpage-clonetest/
+../shiyanshi-brandingpage-en/
+../shiyanshi-new/
+../shiyanshi-website-deploy/
+../shiyanshibrand/
+../shiyanshibrandingpage/
+../startup/
+../xhsintern/
+../xiaohongshu-comment-hema/
+../xiaohongshuintern/
+../广告投放技能市场skills/
+../新建文件夹\ \(2\)/
+
+# Skills and agents config (not project files)
+.agents/
+skills-lock.json
+
+# Local generated icons
+public/images/alens-icon.svg
+src/app/icon.svg

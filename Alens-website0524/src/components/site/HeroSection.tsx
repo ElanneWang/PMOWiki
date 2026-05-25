@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
 import { siteContent } from "@/content/site-content";
 import { RotatingPhrase } from "@/components/site/RotatingPhrase";
 
@@ -34,9 +33,8 @@ export function HeroSection() {
           <div className="mb-16 flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               href={hero.primaryCta.href}
-              className="shadow-button-press inline-flex min-w-[220px] items-center justify-center gap-3 rounded-[20px] bg-[#ff8a13] px-8 py-4 text-base font-bold text-black transition-colors hover:bg-[#ff9226] sm:min-w-[264px]"
+              className="shadow-button-press inline-flex min-w-[220px] items-center justify-center gap-3 rounded-[20px] bg-[#ff8a13] px-8 py-4 text-base font-bold text-white transition-colors hover:bg-[#ff9226] sm:min-w-[264px]"
             >
-              <Sparkles size={18} strokeWidth={2.4} />
               <span>{hero.primaryCta.label}</span>
             </Link>
           </div>
